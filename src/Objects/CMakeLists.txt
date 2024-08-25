@@ -1,0 +1,49 @@
+set(SOURCES_PATH
+	src/
+)
+
+set(OBJECTS_PATH
+    ${SOURCES_PATH}/Objects
+)
+
+set(DEFAULT_OBJECTS_PATH
+    ${OBJECTS_PATH}/DefaultObjects
+)
+
+set(RPGS_OBJECTS_PATH
+    ${OBJECTS_PATH}/RpgObjects
+)
+
+set(DND_OBJECTS_PATH
+    ${OBJECTS_PATH}/DndObjects
+)
+
+set(DEFAULT_OBJECTS_INCLUDES
+    ${DEFAULT_OBJECTS_PATH}/player.h ${DEFAULT_OBJECTS_PATH}/player.cpp
+    ${DEFAULT_OBJECTS_PATH}/die.h ${DEFAULT_OBJECTS_PATH}/die.cpp
+)
+
+set(RPGS_OBJECTS_INCLUDES
+    ${RPGS_OBJECTS_PATH}/rpgcharacter.h ${RPGS_OBJECTS_PATH}/rpgcharacter.cpp
+    ${RPGS_OBJECTS_PATH}/rpgplayer.h ${RPGS_OBJECTS_PATH}/rpgplayer.cpp
+    ${RPGS_OBJECTS_PATH}/rpgcurrency.h ${RPGS_OBJECTS_PATH}/rpgcurrency.cpp
+)
+
+set(DND_OBJECTS_INCLUDES
+    ${DND_OBJECTS_PATH}/dndcharacter.h ${DND_OBJECTS_PATH}/dndcharacter.cpp
+    ${DND_OBJECTS_PATH}/dndplayer.h ${DND_OBJECTS_PATH}/dndplayer.cpp
+)
+
+set(INCLUDE_LIBOBJECTS
+    ${DEFAULT_OBJECTS_INCLUDES}
+    ${RPGS_OBJECTS_INCLUDES}
+    ${DND_OBJECTS_INCLUDES}
+)
+
+set(INCLUDE_PATHS
+    ${SOURCES_PATH}
+    ${OBJECTS_PATH}
+    ${DEFAULT_OBJECTS_PATH}
+    ${RPGS_OBJECTS_PATH}
+    ${DND_OBJECTS_PATH}
+)
