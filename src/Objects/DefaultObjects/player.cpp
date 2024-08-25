@@ -37,4 +37,9 @@ void Player::setPlayerLoggedIn(bool p_playerLoggedIn)
     m_playerLoggedIn = p_playerLoggedIn;
 }
 
+Player::Player_ptr Player::thisPlayer()
+{
+    return Player_ptr(this);
+}
+
 } // namespace TableTopLib

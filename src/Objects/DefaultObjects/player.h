@@ -9,6 +9,7 @@ namespace TableTopLib {
 class TABLETOPLIB_EXPORT Player : public TableTopLib::TableTopObject
 {
     Q_OBJECT
+    typedef std::shared_ptr<Player> Player_ptr;
 public:
     explicit Player(QObject *parent = nullptr);
 
@@ -21,10 +22,13 @@ public:
     bool playerLoggedIn() const;
     void setPlayerLoggedIn(bool p_playerLoggedIn);
 
+    Player_ptr thisPlayer();
+
 protected:
     QString m_playerName;
     bool m_playerLoggedIn;
 };
+typedef std::shared_ptr<Player> Player_ptr;
 
 } // namespace TableTopLib
 
