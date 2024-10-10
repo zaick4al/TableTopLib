@@ -2,11 +2,11 @@
 
 namespace TableTopLib {
 
-Die::Die(QObject *parent)
+Die::Die(long long p_id, QObject *parent)
     : TableTopLib::TableTopObject{parent},
     m_dieSides(6)
 {
-
+    setId(p_id);
 }
 
 QList<int> Die::rollTheDice(int p_diceAmount)

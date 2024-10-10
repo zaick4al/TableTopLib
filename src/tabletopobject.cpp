@@ -12,12 +12,12 @@ TableTopObject::~TableTopObject()
 
 }
 
-QString TableTopObject::id() const
+long long TableTopObject::id() const
 {
     return m_id;
 }
 
-void TableTopObject::setId(const QString &p_id)
+void TableTopObject::setId(const long long &p_id)
 {
     if(m_id == p_id)
         return;

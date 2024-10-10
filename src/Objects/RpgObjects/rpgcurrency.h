@@ -10,7 +10,7 @@ class TABLETOPLIB_EXPORT RpgCurrency : public TableTopLib::TableTopObject
 {
     Q_OBJECT
 public:
-    explicit RpgCurrency(QObject *parent = nullptr);
+    explicit RpgCurrency(long long p_id, QObject *parent = nullptr);
     struct Currency{
         QString currencyType;
         int currencyAmount;
@@ -18,7 +18,7 @@ public:
 protected:
     QList<Currency> m_currencies;
 };
-
+typedef std::shared_ptr<RpgCurrency> RpgCurrency_ptr;
 } // namespace TableTopLib
 
 #endif // TABLETOPLIB_RPGCURRENCY_H

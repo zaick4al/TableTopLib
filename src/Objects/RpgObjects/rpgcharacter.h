@@ -25,7 +25,7 @@ public:
         int diceSides = 0;
     };
 
-    explicit RpgCharacter(QObject *parent = nullptr);
+    explicit RpgCharacter(long long p_id, QObject *parent = nullptr);
 
     virtual void deserialize(const QJsonObject &p_jsonObject);
     virtual QJsonObject serialize();

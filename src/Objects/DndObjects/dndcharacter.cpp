@@ -3,10 +3,10 @@
 
 namespace TableTopLib {
 
-DndCharacter::DndCharacter(QObject *parent)
-    : TableTopLib::RpgCharacter{parent}
+DndCharacter::DndCharacter(long long p_id, QObject *parent)
+    : TableTopLib::RpgCharacter{p_id, parent}
 {
-
+    setId(p_id);
 }
 
 DndPlayer_ptr DndCharacter::characterPlayer() const

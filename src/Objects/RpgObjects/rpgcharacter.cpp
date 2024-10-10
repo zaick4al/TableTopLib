@@ -3,12 +3,14 @@
 
 namespace TableTopLib {
 
-RpgCharacter::RpgCharacter(QObject *parent)
+RpgCharacter::RpgCharacter(long long p_id, QObject *parent)
     : TableTopLib::TableTopObject{parent},
     m_level(0),
     m_experiencePoints(0),
     m_experiencePointsNeeded(0)
-{}
+{
+    setId(p_id);
+}
 
 void RpgCharacter::deserialize(const QJsonObject &p_jsonObject)
 {

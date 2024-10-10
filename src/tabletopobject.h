@@ -10,14 +10,15 @@ class TABLETOPLIB_EXPORT TableTopObject : public QObject{
 public:
     explicit TableTopObject(QObject *parent = nullptr);
     ~TableTopObject();
-    virtual QString id() const;
-    virtual void setId(const QString &p_id);
+    virtual long long id() const;
+    virtual void setId(const long long &p_id);
 
 signals:
     void idChanged();
+    void removePending();
 
 protected:
-    QString m_id;
+    long long m_id;
 };
 } //namespace TableTopLib
 

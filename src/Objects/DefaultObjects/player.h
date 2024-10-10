@@ -11,7 +11,7 @@ class TABLETOPLIB_EXPORT Player : public TableTopLib::TableTopObject
     Q_OBJECT
     typedef std::shared_ptr<Player> Player_ptr;
 public:
-    explicit Player(QObject *parent = nullptr);
+    explicit Player(long long p_id, QObject *parent = nullptr);
 
     virtual void deserialize(const QJsonObject &p_jsonObject);
 

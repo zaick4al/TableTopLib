@@ -10,7 +10,7 @@ class TABLETOPLIB_EXPORT Die : public TableTopLib::TableTopObject
 {
     Q_OBJECT
 public:
-    explicit Die(QObject *parent = nullptr);
+    explicit Die(long long p_id, QObject *parent = nullptr);
 
     virtual QList<int>rollTheDice(int p_diceAmount = 1);
 
@@ -20,6 +20,7 @@ public:
 protected:
     int m_dieSides;
 };
+typedef std::shared_ptr<Die> Dice_ptr;
 
 } // namespace TableTopLib
 

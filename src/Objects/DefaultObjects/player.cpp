@@ -2,10 +2,10 @@
 
 namespace TableTopLib {
 
-Player::Player(QObject *parent)
+Player::Player(long long p_id, QObject *parent)
     : TableTopLib::TableTopObject{parent}, m_playerLoggedIn(false)
 {
-
+    setId(p_id);
 }
 
 void Player::deserialize(const QJsonObject &p_jsonObject)

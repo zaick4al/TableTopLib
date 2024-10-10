@@ -13,7 +13,7 @@ class TABLETOPLIB_EXPORT DndCharacter : public TableTopLib::RpgCharacter
     Q_OBJECT
     typedef std::shared_ptr<DndCharacter> DndCharacter_ptr;
 public:
-    explicit DndCharacter(QObject *parent = nullptr);
+    explicit DndCharacter(long long p_id, QObject *parent = nullptr);
 
     DndPlayer_ptr characterPlayer() const;
     void setCharacterPlayer(const DndPlayer_ptr &p_characterPlayer);
