@@ -21,7 +21,6 @@ void TableTopObject::setId(const long long &p_id)
 {
     if(m_id == p_id)
         return;
-    emit idChanged();
     m_id = p_id;
 }
 

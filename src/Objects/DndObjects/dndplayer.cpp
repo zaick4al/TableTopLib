@@ -18,9 +18,4 @@ void DndPlayer::setPlayerCharacter(const TableTopLib::DndCharacter_ptr &p_player
     m_playerCharacter = p_playerCharacter;
 }
 
-DndPlayer::DndPlayer_ptr DndPlayer::thisPlayer()
-{
-    return DndPlayer_ptr(this);
-}
-
 } // namespace TableTopLib

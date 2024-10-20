@@ -258,13 +258,6 @@ RpgPlayer_ptr RpgCharacter::characterPlayer() const
 void RpgCharacter::setCharacterPlayer(const RpgPlayer_ptr &p_characterPlayer)
 {
     m_characterPlayer = p_characterPlayer;
-    if(p_characterPlayer->playerCharacter() != thisCharacter())
-        p_characterPlayer->setPlayerCharacter(thisCharacter());
-}
-
-RpgCharacter::RpgCharacter_ptr RpgCharacter::thisCharacter()
-{
-    return RpgCharacter_ptr(this);
 }
 
 } // namespace TableTopLib

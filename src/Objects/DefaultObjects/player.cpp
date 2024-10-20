@@ -8,6 +8,13 @@ Player::Player(long long p_id, QObject *parent)
     setId(p_id);
 }
 
+const QJsonObject Player::serialize()
+{
+    QJsonObject jsonObject;
+    jsonObject.insert("player_name", playerName());
+    return jsonObject;
+}
+
 void Player::deserialize(const QJsonObject &p_jsonObject)
 {
     if(p_jsonObject.contains("player_name"))
@@ -35,11 +42,6 @@ bool Player::playerLoggedIn() const
 void Player::setPlayerLoggedIn(bool p_playerLoggedIn)
 {
     m_playerLoggedIn = p_playerLoggedIn;
-}
-
-Player::Player_ptr Player::thisPlayer()
-{
-    return Player_ptr(this);
 }
 
 } // namespace TableTopLib
