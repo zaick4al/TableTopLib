@@ -21,7 +21,7 @@ LibControl::LibControl(QObject *parent)
 template<typename T>
 std::shared_ptr<T> LibControl::createObject(long long p_id)
 {
-    if(!std::is_convertible_v<T, TableTopObject>)
+    if(!std::is_convertible_v<std::shared_ptr<T>, TableTopObject>)
         return nullptr;
     auto createdObject = std::make_shared<T>(p_id);
     connect(createdObject.get(), &TableTopObject::removePending, this, [=](){
@@ -33,7 +33,7 @@ std::shared_ptr<T> LibControl::createObject(long long p_id)
 template<typename T>
 std::shared_ptr<T> LibControl::getOrAdd(long long p_id)
 {
-    if(!std::is_convertible_v<T, TableTopObject>)
+    if(!std::is_convertible_v<std::shared_ptr<T>, TableTopObject>)
         return nullptr;
     auto gotObject = get<T>(p_id);
     if(gotObject)
@@ -67,7 +67,7 @@ std::shared_ptr<T> LibControl::getOrAdd(T *p_rawPointer)
 template<typename T>
 std::shared_ptr<T> LibControl::get(long long p_id)
 {
-    if(!std::is_convertible_v<T, TableTopObject>)
+    if(!std::is_convertible_v<std::shared_ptr<T>, TableTopObject>)
         return nullptr;
     if(m_objects.contains(p_id))
         return std::dynamic_pointer_cast<T>(m_objects.value(p_id));
@@ -98,7 +98,7 @@ std::shared_ptr<T> LibControl::get(T *p_rawPointer)
 template<typename T>
 void LibControl::remove(long long p_id)
 {
-    if(!std::is_convertible_v<T, TableTopObject>)
+    if(!std::is_convertible_v<std::shared_ptr<T>, TableTopObject>)
         return;
     TableTopObject_ptr sharedObject = get<T>(p_id);
     if(!sharedObject)
