@@ -20,6 +20,7 @@ signals:
 protected:
     long long m_id;
 };
+typedef std::shared_ptr<TableTopObject> TableTopObject_ptr;
 } //namespace TableTopLib
 
 #endif // TABLETOPOBJECT_H

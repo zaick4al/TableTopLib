@@ -2,6 +2,7 @@
 #define LIBCONTROL_H
 
 #include <QObject>
+#include <tabletopobject.h>
 #include <DefaultObjects/die.h>
 #include <DefaultObjects/player.h>
 #include <RpgObjects/rpgcharacter.h>
@@ -9,6 +10,7 @@
 #include <RpgObjects/rpgplayer.h>
 #include <DndObjects/dndplayer.h>
 #include <DndObjects/dndcharacter.h>
+
 namespace TableTopLib {
 class TABLETOPLIB_EXPORT LibControl : public QObject
 {
@@ -16,12 +18,34 @@ class TABLETOPLIB_EXPORT LibControl : public QObject
 public:
     static LibControl &instance();
     QList<int> rollTheDice(int p_dieSides = 20, int p_dieAmount = 1);
+
     template <typename T>
     std::shared_ptr<T> getOrAdd(long long p_id);
     template <typename T>
+    std::shared_ptr<T> getOrAdd(std::shared_ptr<T> p_object);
+    template <typename T>
+    std::shared_ptr<T> getOrAdd(std::weak_ptr<T> p_objectWeak);
+    template <typename T>
+    std::shared_ptr<T> getOrAdd(T* p_rawPointer);
+
+
+    template <typename T>
     std::shared_ptr<T> get(long long p_id);
     template <typename T>
+    std::shared_ptr<T> get(std::shared_ptr<T> p_object);
+    template <typename T>
+    std::shared_ptr<T> get(std::weak_ptr<T> p_objectWeak);
+    template <typename T>
+    std::shared_ptr<T> get(T* p_rawPointer);
+
+    template <typename T>
+    void remove(long long p_id);
+    template <typename T>
     void remove(std::shared_ptr<T> p_object);
+    template <typename T>
+    void remove(std::weak_ptr<T> p_objectWeak);
+    template <typename T>
+    void remove(T* p_rawPointer);
 signals:
 
 protected:
@@ -31,12 +55,7 @@ protected:
 
 private:
     Dice_ptr m_dice;
-    QHash<long long, Player_ptr> m_players;
-    QHash<long long, RpgCharacter_ptr> m_rpgCharacters;
-    QHash<long long, RpgCurrency_ptr> m_rpgCurrencies;
-    QHash<long long, RpgPlayer_ptr> m_rpgPlayers;
-    QHash<long long, DndPlayer_ptr> m_dndPlayers;
-    QHash<long long, DndCharacter_ptr> m_dndCharacters;
+    QHash<long long, TableTopObject_ptr> m_objects;
 };
 }
 //typedef TableTopLib::LibControl::instance() TABLETOP;
