@@ -12,6 +12,10 @@
 #include <DndObjects/dndcharacter.h>
 
 namespace TableTopLib {
+
+#ifndef TTControl
+#define TTControl TableTopLib::LibControl::instance()
+#endif
 /**
  * @brief The LibControl class
  * Singleton that let's you manage objects easily with methods to add, remove and get objects as std::shared_ptrs
@@ -23,7 +27,8 @@ public:
     /**
      * @brief LibControl
      * @return &LibControl
-     * LibControl singleton instance call
+     * @details LibControl singleton instance call
+     * @warning This method has typedef call, use TTControl instead of TableTopLib::LibControl::instance()
      */
     static LibControl &instance();
 
@@ -31,9 +36,17 @@ public:
      * @brief Rolling the dice
      * @param p_dieSides - argument that lets you dice d{what} are you rolling (default = 20{d20})
      * @param p_dieAmount - argument that lets you roll multiple dice (default = 1)
-     * @return
+     * @return QList<int>
      */
     QList<int> rollTheDice(int p_dieSides = 20, int p_dieAmount = 1);
+
+    /**
+     * @brief createEntity
+     * @return std::shared_ptr<T>
+     * @details Return newly created std::shared_ptr of object with new assigned id, used for generally creating new objects
+     */
+    template <typename T>
+    std::shared_ptr<T> createEntity();
 
     /**
      * @brief getOrAdd
